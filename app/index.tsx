@@ -85,12 +85,10 @@ const bookmarks = [
 
 
 
-
 import React, { useState, useCallback, useMemo } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   ScrollView,
   TouchableOpacity,
   Modal,
@@ -105,9 +103,12 @@ import {
 import { Camera, X, Filter, Calendar, ChevronDown } from 'lucide-react';
 
 // Atomic Components
-const IconButton = ({ icon: Icon, onPress, color = "#000", size = 24 }) => (
+const IconButton = ({ icon: Icon, onPress, color = "#000", size = 24 }:any) => (
   <TouchableOpacity 
-    style={styles.iconButton}
+    style={{
+      padding: 8,
+      borderRadius: 20
+    }}
     onPress={onPress}
     activeOpacity={0.7}
   >
@@ -115,56 +116,119 @@ const IconButton = ({ icon: Icon, onPress, color = "#000", size = 24 }) => (
   </TouchableOpacity>
 );
 
-const Badge = ({ children, variant = "default", onPress }) => {
+const Badge = ({ children, variant = "default", onPress }:any) => {
   const badgeStyles = {
-    default: [styles.badge, styles.badgeDefault],
-    active: [styles.badge, styles.badgeActive],
-    muted: [styles.badge, styles.badgeMuted]
+    default: {
+      backgroundColor: '#e3f2fd',
+      color: '#2196f3'
+    },
+    active: {
+      backgroundColor: '#2196f3',
+      color: '#fff'
+    },
+    muted: {
+      backgroundColor: '#f5f5f5',
+      color: '#666'
+    }
   };
 
-  const textStyles = {
-    default: [styles.badgeText, styles.badgeTextDefault],
-    active: [styles.badgeText, styles.badgeTextActive],
-    muted: [styles.badgeText, styles.badgeTextMuted]
-  };
+  const style: any = (badgeStyles as any)[variant];
 
   return (
     <TouchableOpacity 
-      style={badgeStyles[variant]} 
+      style={{
+        paddingHorizontal: 12,
+        paddingVertical: 6,
+        borderRadius: 16,
+        marginRight: 8,
+        marginBottom: 8,
+        backgroundColor: style.backgroundColor
+      }}
       onPress={onPress}
       disabled={!onPress}
       activeOpacity={onPress ? 0.7 : 1}
     >
-      <Text style={textStyles[variant]}>{children}</Text>
+      <Text style={{
+        fontSize: 12,
+        fontWeight: '500',
+        color: style.color
+      }}>{children}</Text>
     </TouchableOpacity>
   );
 };
 
 // Molecule Components
-const Header = ({ onFilterPress }) => (
-  <View style={styles.header}>
+const Header = ({ onFilterPress }: any) => (
+  <View style={{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 16,
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#e1e1e1'
+  }}>
     <View>
-      <Text style={styles.headerTitle}>Screenshot Bookmarks</Text>
-      <Text style={styles.headerSubtitle}>Your captured moments</Text>
+      <Text style={{
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#000'
+      }}>Screenshot Bookmarks</Text>
+      <Text style={{
+        fontSize: 14,
+        color: '#666'
+      }}>Your captured moments</Text>
     </View>
     <IconButton icon={Filter} onPress={onFilterPress} />
   </View>
 );
 
-const BookmarkCard = ({ title, text, tags, date, onPress }) => (
+const BookmarkCard = ({ title, text, tags, date, onPress }: any) => (
   <TouchableOpacity 
-    style={styles.card}
+    style={{
+      backgroundColor: '#fff',
+      borderRadius: 12,
+      padding: 16,
+      marginBottom: 16,
+      ...Platform.select({
+        ios: {
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.1,
+          shadowRadius: 4,
+        },
+        android: {
+          elevation: 3,
+        },
+      })
+    }}
     onPress={onPress}
     activeOpacity={0.7}
   >
-    <Text style={styles.cardTitle}>{title}</Text>
-    <Text style={styles.cardText} numberOfLines={2}>{text}</Text>
-    <View style={styles.tagContainer}>
-      {tags.map((tag, index) => (
+    <Text style={{
+      fontSize: 18,
+      fontWeight: '600',
+      marginBottom: 8,
+      color: '#000'
+    }}>{title}</Text>
+    <Text style={{
+      fontSize: 14,
+      color: '#666',
+      marginBottom: 12
+    }} numberOfLines={2}>{text}</Text>
+    <View style={{
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      marginBottom: 8
+    }}>
+      {tags.map((tag: any, index: any) => (
         <Badge key={index}>#{tag}</Badge>
       ))}
     </View>
-    <Text style={styles.dateText}>
+    <Text style={{
+      fontSize: 12,
+      color: '#666'
+    }}>
       {new Date(date).toLocaleDateString(undefined, { 
         year: 'numeric', 
         month: 'short', 
@@ -174,11 +238,11 @@ const BookmarkCard = ({ title, text, tags, date, onPress }) => (
   </TouchableOpacity>
 );
 
-const FilterSheet = ({ visible, onClose, selectedTags, onTagToggle, tags }) => {
+const FilterSheet = ({ visible, onClose, selectedTags, onTagToggle, tags }: any) => {
   const [searchQuery, setSearchQuery] = useState("");
   
   const filteredTags = useMemo(() => 
-    tags.filter(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())),
+    tags.filter((tag: any) => tag.toLowerCase().includes(searchQuery.toLowerCase())),
     [tags, searchQuery]
   );
 
@@ -190,19 +254,46 @@ const FilterSheet = ({ visible, onClose, selectedTags, onTagToggle, tags }) => {
       onRequestClose={onClose}
     >
       <TouchableOpacity 
-        style={styles.modalOverlay} 
+        style={{
+          flex: 1,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
         activeOpacity={1} 
         onPress={onClose}
       >
-        <View style={styles.filterSheet}>
-          <View style={styles.filterHeader}>
-            <Text style={styles.filterTitle}>Filters</Text>
+        <View style={{
+          backgroundColor: '#fff',
+          borderRadius: 12,
+          padding: 16,
+          width: '90%',
+          maxWidth: 400
+        }}>
+          <View style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: 16
+          }}>
+            <Text style={{
+              fontSize: 20,
+              fontWeight: '600'
+            }}>Filters</Text>
             <IconButton icon={X} onPress={onClose} />
           </View>
           
-          <View style={styles.searchContainer}>
+          <View style={{
+            backgroundColor: '#f5f5f5',
+            borderRadius: 8,
+            padding: 8,
+            marginBottom: 16
+          }}>
             <TextInput
-              style={styles.searchInput}
+              style={{
+                fontSize: 16,
+                color: '#000'
+              }}
               placeholder="Search tags..."
               value={searchQuery}
               onChangeText={setSearchQuery}
@@ -210,14 +301,19 @@ const FilterSheet = ({ visible, onClose, selectedTags, onTagToggle, tags }) => {
             />
           </View>
 
-          <Text style={styles.sectionTitle}>Selected Tags</Text>
+          <Text style={{
+            fontSize: 14,
+            fontWeight: '600',
+            marginBottom: 8,
+            color: '#666'
+          }}>Selected Tags</Text>
           <ScrollView 
             horizontal 
             showsHorizontalScrollIndicator={false}
-            style={styles.selectedTagsContainer}
+            style={{ marginBottom: 16 }}
           >
             {selectedTags.length > 0 ? (
-              selectedTags.map((tag, index) => (
+              selectedTags.map((tag: any, index: any) => (
                 <Badge 
                   key={index} 
                   variant="active" 
@@ -227,11 +323,19 @@ const FilterSheet = ({ visible, onClose, selectedTags, onTagToggle, tags }) => {
                 </Badge>
               ))
             ) : (
-              <Text style={styles.emptyText}>No tags selected</Text>
+              <Text style={{
+                color: '#666',
+                fontStyle: 'italic'
+              }}>No tags selected</Text>
             )}
           </ScrollView>
 
-          <Text style={styles.sectionTitle}>Available Tags</Text>
+          <Text style={{
+            fontSize: 14,
+            fontWeight: '600',
+            marginBottom: 8,
+            color: '#666'
+          }}>Available Tags</Text>
           <FlatList
             data={filteredTags}
             keyExtractor={(item, index) => index.toString()}
@@ -244,7 +348,7 @@ const FilterSheet = ({ visible, onClose, selectedTags, onTagToggle, tags }) => {
               </Badge>
             )}
             numColumns={3}
-            contentContainerStyle={styles.tagGrid}
+            contentContainerStyle={{ paddingBottom: 16 }}
           />
         </View>
       </TouchableOpacity>
@@ -252,7 +356,7 @@ const FilterSheet = ({ visible, onClose, selectedTags, onTagToggle, tags }) => {
   );
 };
 
-const DetailModal = ({ bookmark, visible, onClose }) => {
+const DetailModal = ({ bookmark, visible, onClose }: any) => {
   if (!bookmark) return null;
 
   return (
@@ -263,34 +367,61 @@ const DetailModal = ({ bookmark, visible, onClose }) => {
       onRequestClose={onClose}
     >
       <TouchableOpacity 
-        style={styles.modalOverlay} 
+        style={{
+          flex: 1,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
         activeOpacity={1} 
         onPress={onClose}
       >
-        <View style={styles.detailCard}>
-          <View style={styles.detailHeader}>
-            <Text style={styles.detailTitle}>{bookmark.title}</Text>
+        <View style={{
+          backgroundColor: '#fff',
+          borderRadius: 12,
+          padding: 16,
+          width: '90%',
+          maxWidth: 400,
+          maxHeight: "90vh"
+        } as any}>
+          <View style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: 16
+          }}>
+            <Text style={{
+              fontSize: 20,
+              fontWeight: '600',
+              flex: 1
+            }}>{bookmark.title}</Text>
             <IconButton icon={X} onPress={onClose} />
           </View>
           
           <ScrollView 
-            style={styles.detailTextContainer}
-            contentContainerStyle={{ maxHeight: '90vh' }}
+            style={{ maxHeight: '60vh' } as any}
           >
-            <Text style={styles.detailText}>{bookmark.content}</Text>
+            <Text style={{
+              fontSize: 16,
+              color: '#666',
+              marginBottom: 16
+            }}>{bookmark.content}</Text>
           </ScrollView>
           
           <ScrollView 
             horizontal 
             showsHorizontalScrollIndicator={false}
-            style={styles.detailTagContainer}
+            style={{ marginBottom: 16 }}
           >
-            {bookmark.tags.map((tag, index) => (
+            {bookmark.tags.map((tag: any, index: any) => (
               <Badge key={index}>#{tag}</Badge>
             ))}
           </ScrollView>
           
-          <Text style={styles.detailDate}>
+          <Text style={{
+            fontSize: 12,
+            color: '#666'
+          }}>
             {new Date(bookmark.date).toLocaleString()}
           </Text>
         </View>
@@ -299,15 +430,12 @@ const DetailModal = ({ bookmark, visible, onClose }) => {
   );
 };
 
-
 // Main Component
 const ScreenshotBookmarks = () => {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedBookmark, setSelectedBookmark] = useState(null);
   
-  // Sample data - in real app, this would come from props or API
-
   const allTags = useMemo(() => 
     [...new Set(bookmarks.flatMap(bookmark => bookmark.tags))],
     [bookmarks]
@@ -321,29 +449,32 @@ const ScreenshotBookmarks = () => {
     [bookmarks, selectedTags]
   );
 
-  const handleTagToggle = useCallback((tag) => {
-    setSelectedTags(prev => 
+  const handleTagToggle = useCallback((tag: any) => {
+    setSelectedTags((prev: any) => 
       prev.includes(tag) 
-        ? prev.filter(t => t !== tag)
+        ? prev.filter((t: any) => t !== tag)
         : [...prev, tag]
     );
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View style={{
+      flex: 1,
+      backgroundColor: '#f5f5f5'
+    }}>
       <StatusBar barStyle="dark-content" />
       <Header onFilterPress={() => setIsFilterVisible(true)} />
       
       <FlatList
         data={filteredBookmarks}
         keyExtractor={item => item.id.toString()}
-        renderItem={({ item }) => (
+        renderItem={({ item }: any) => (
           <BookmarkCard
             {...item}
             onPress={() => setSelectedBookmark(item)}
           />
         )}
-        contentContainerStyle={styles.bookmarkList}
+        contentContainerStyle={{ padding: 16 }}
       />
 
       <FilterSheet
@@ -362,184 +493,5 @@ const ScreenshotBookmarks = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f5f5f5',
-  },
-  iconButton: {
-    padding: 8,
-    borderRadius: 20,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 16,
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e1e1e1',
-  },
-  headerTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#000',
-  },
-  headerSubtitle: {
-    fontSize: 14,
-    color: '#666',
-  },
-  bookmarkList: {
-    padding: 16,
-  },
-  card: {
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 16,
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
-  },
-  cardTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginBottom: 8,
-    color: '#000',
-  },
-  cardText: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 12,
-  },
-  tagContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginBottom: 8,
-  },
-  badge: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 16,
-    marginRight: 8,
-    marginBottom: 8,
-  },
-  badgeDefault: {
-    backgroundColor: '#e3f2fd',
-  },
-  badgeActive: {
-    backgroundColor: '#2196f3',
-  },
-  badgeMuted: {
-    backgroundColor: '#f5f5f5',
-  },
-  badgeText: {
-    fontSize: 12,
-    fontWeight: '500',
-  },
-  badgeTextDefault: {
-    color: '#2196f3',
-  },
-  badgeTextActive: {
-    color: '#fff',
-  },
-  badgeTextMuted: {
-    color: '#666',
-  },
-  dateText: {
-    fontSize: 12,
-    color: '#666',
-  },
-  modalOverlay: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  filterSheet: {
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 16,
-    width: '90%',
-    maxWidth: 400,
-  },
-  filterHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  filterTitle: {
-    fontSize: 20,
-    fontWeight: '600',
-  },
-  searchContainer: {
-    backgroundColor: '#f5f5f5',
-    borderRadius: 8,
-    padding: 8,
-    marginBottom: 16,
-  },
-  searchInput: {
-    fontSize: 16,
-    color: '#000',
-  },
-  sectionTitle: {
-    fontSize: 14,
-    fontWeight: '600',
-    marginBottom: 8,
-    color: '#666',
-  },
-  selectedTagsContainer: {
-    marginBottom: 16,
-  },
-  tagGrid: {
-    paddingBottom: 16,
-  },
-  emptyText: {
-    color: '#666',
-    fontStyle: 'italic',
-  },
-  detailCard: {
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 16,
-    width: '90%',
-    maxWidth: 400,
-    maxHeight: "90vh"
-  },
-  detailHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  detailTitle: {
-    fontSize: 20,
-    fontWeight: '600',
-    flex: 1,
-  },
-  detailText: {
-    fontSize: 16,
-    color: '#666',
-    marginBottom: 16,
-  },
-  detailTagContainer: {
-    marginBottom: 16,
-  },
-  detailDate: {
-    fontSize: 12,
-    color: '#666',
-  },
-});
 
 export default ScreenshotBookmarks;
