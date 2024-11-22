@@ -169,17 +169,17 @@ const Header = ({ onFilterPress }: any) => (
     borderBottomWidth: 1,
     borderBottomColor: '#e1e1e1'
   }}>
-    <View>
-      <Text style={{
-        fontSize: 24,
-        fontWeight: 'bold',
-        color: '#000'
-      }}>Screenshot Bookmarks</Text>
-      <Text style={{
-        fontSize: 14,
-        color: '#666'
-      }}>Your captured moments</Text>
-    </View>
+      <View>
+        <Text style={{
+          fontSize: 24,
+          fontWeight: 'bold',
+          color: '#000'
+      }}>Magic App</Text>
+        <Text style={{
+          fontSize: 14,
+          color: '#666'
+        }}>The app you always needed</Text>
+      </View>
     <IconButton icon={Filter} onPress={onFilterPress} />
   </View>
 );
