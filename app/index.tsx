@@ -101,7 +101,7 @@ import {
   Keyboard,
   Dimensions
 } from 'react-native';
-import { Camera, X, Filter, Calendar, ChevronDown } from 'lucide-react';
+import { Camera, X, Filter, Calendar, ChevronDown, Newspaper, ChevronRight } from 'lucide-react';
 
 // Atomic Components
 const IconButton = ({ icon: Icon, onPress, color = "#000", size = 24 }:any) => (
@@ -183,60 +183,125 @@ const Header = () => (
   </View>
 );
 
-const BookmarkCard = ({ title, text, tags, date, onPress }: any) => (
-  <TouchableOpacity 
-    style={{
-      backgroundColor: '#fff',
-      borderRadius: 12,
-      padding: 16,
-      marginBottom: 16,
-      ...Platform.select({
-        ios: {
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: 2 },
-          shadowOpacity: 0.1,
-          shadowRadius: 4,
-        },
-        android: {
-          elevation: 3,
-        },
-      })
-    }}
-    onPress={onPress}
-    activeOpacity={0.7}
-  >
-    <Text style={{
-      fontSize: 18,
-      fontWeight: '600',
-      marginBottom: 8,
-      color: '#000'
-    }}>{title}</Text>
-    <Text style={{
-      fontSize: 14,
-      color: '#666',
-      marginBottom: 12
-    }} numberOfLines={2}>{text}</Text>
-    <View style={{
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      marginBottom: 8
-    }}>
-      {tags.map((tag: any, index: any) => (
-        <Badge key={index}>#{tag}</Badge>
-      ))}
-    </View>
-    <Text style={{
-      fontSize: 12,
-      color: '#666'
-    }}>
-      {new Date(date).toLocaleDateString(undefined, { 
-        year: 'numeric', 
-        month: 'short', 
-        day: 'numeric' 
-      })}
-    </Text>
-  </TouchableOpacity>
-);
+const NewsCard = ({ title, text, tags, date, onPress }: any) => {
+  return (
+    <TouchableOpacity 
+      style={{
+        backgroundColor: '#fff',
+        borderRadius: 12,
+        marginBottom: 16,
+        overflow: 'hidden',
+        ...Platform.select({
+          ios: {
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.1,
+            shadowRadius: 4,
+          },
+          android: {
+            elevation: 3,
+          },
+        })
+      }}
+      onPress={onPress}
+      activeOpacity={0.7}
+    >
+      {/* Type indicator bar */}
+      <View style={{
+        backgroundColor: '#2196f3',
+        paddingHorizontal: 16,
+        paddingVertical: 8,
+        flexDirection: 'row',
+        alignItems: 'center'
+      }}>
+        <Newspaper size={16} color="#fff" />
+        <Text style={{
+          color: '#fff',
+          fontSize: 12,
+          fontWeight: '500',
+          marginLeft: 8
+        }}>NEWS</Text>
+      </View>
+
+      {/* Content container */}
+      <View style={{ padding: 16 }}>
+        {/* Title row */}
+        <View style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          marginBottom: 8
+        }}>
+          <Text style={{
+            flex: 1,
+            fontSize: 18,
+            fontWeight: '600',
+            color: '#000',
+            marginRight: 8
+          }}>{title}</Text>
+          <ChevronRight size={20} color="#666" />
+        </View>
+
+        {/* Description */}
+        <Text 
+          style={{
+            fontSize: 14,
+            color: '#666',
+            marginBottom: 12,
+            lineHeight: 20
+          }} 
+          numberOfLines={2}
+        >
+          {text}
+        </Text>
+
+        {/* Tags */}
+        <View style={{
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          marginBottom: 12
+        }}>
+          {tags.map((tag: string, index: number) => (
+            <Badge key={index}>#{tag}</Badge>
+          ))}
+        </View>
+
+        {/* Date and time indicator */}
+        <View style={{
+          flexDirection: 'row',
+          alignItems: 'center'
+        }}>
+          <Text style={{
+            fontSize: 12,
+            color: '#666'
+          }}>
+            {new Date(date).toLocaleDateString(undefined, { 
+              year: 'numeric', 
+              month: 'short', 
+              day: 'numeric' 
+            })}
+          </Text>
+          <View style={{
+            width: 4,
+            height: 4,
+            borderRadius: 2,
+            backgroundColor: '#666',
+            marginHorizontal: 8
+          }} />
+          <Text style={{
+            fontSize: 12,
+            color: '#666'
+          }}>
+            {new Date(date).toLocaleTimeString(undefined, {
+              hour: '2-digit',
+              minute: '2-digit'
+            })}
+          </Text>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+};
 
 const FilterSheet = ({ visible, onClose, selectedTags, onTagToggle, tags }: any) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -469,7 +534,7 @@ const ScreenshotBookmarks = () => {
         data={filteredBookmarks}
         keyExtractor={item => item.id.toString()}
         renderItem={({ item }: any) => (
-          <BookmarkCard
+          <NewsCard
             {...item}
             onPress={() => setSelectedBookmark(item)}
           />
