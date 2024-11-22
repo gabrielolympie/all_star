@@ -918,7 +918,7 @@ const ScreenshotBookmarks = () => {
   useEffect(() => {
     getRecommendations(userPreference, news.map(({ title }) => title)).then((res) => {
       console.log("res", res);
-      const goodTitles = res.slice(0, 10).map(({ article }: any) => article);
+      const goodTitles = res.slice(0, 5).map(({ article }: any) => article);
       setGoodNews(news.filter(({ title }) => goodTitles.includes(title)));
     });
   }, []);
