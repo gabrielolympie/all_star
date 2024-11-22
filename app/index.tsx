@@ -1,5 +1,6 @@
 const tags = ['technology', 'politics', 'health', 'environment', 'education', 'entertainment', 'travel', 'food', 'sports'];
 
+
 const bookmarks = [
   {
     id: 1,
@@ -461,7 +462,7 @@ const ScreenshotBookmarks = () => {
     <View style={{
       flex: 1,
       backgroundColor: '#f5f5f5'
-    }}>
+    }} >
       <StatusBar barStyle="dark-content" />
       <Header onFilterPress={() => setIsFilterVisible(true)} />
       
