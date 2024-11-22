@@ -10,6 +10,9 @@ const tags = [
   "sports",
 ];
 
+const BASE_URL = 'http://localhost:5000';
+
+
 interface News {
   id?: number;
   type: "news";
@@ -191,23 +194,9 @@ const productivities = [
   },
 ];
 
-const memories = [
-  {
-    name: "news",
-    preference:
-      "Technology News. The user prefers news related to advancements in artificial intelligence, blockchain technology, and consumer electronics. They are interested in industry analysis, expert opinions, and case studies showcasing real-world applications. Reliable sources include Wired, TechCrunch, and MIT Technology Review, with an emphasis on emerging trends and ethical implications.",
-  },
-  {
-    name: "news",
-    preference:
-      "Sports. The user is a fan of soccer and basketball, following both international tournaments and local leagues. They appreciate in-depth match analysis, player profiles, and tactical breakdowns. Preferred sources are ESPN, The Athletic, and social media commentary from analysts. The tone should be dynamic and engaging.",
-  },
-  {
-    name: "news",
-    preference:
-      "Entertainment. The user prefers news about the latest movies, TV shows, and celebrity interviews, particularly focusing on drama and sci-fi genres. They follow streaming platforms like Netflix and Disney+ and enjoy behind-the-scenes stories, director interviews, and critical reviews. They appreciate sources like Variety and Rotten Tomatoes.",
-  },
-];
+const userPreference =  "Technology News. The user prefers news related to advancements in artificial intelligence, blockchain technology, and consumer electronics. They are interested in industry analysis, expert opinions, and case studies showcasing real-world applications. Reliable sources include Wired, TechCrunch, and MIT Technology Review, with an emphasis on emerging trends and ethical implications.";
+
+getRecommendations(userPreference, news.map(({ title }) => title));
 
 function shuffleArray(array: any[]) {
   for (let i = array.length - 1; i >= 0; i--) {
@@ -217,9 +206,7 @@ function shuffleArray(array: any[]) {
   return array;
 }
 
-const data: any[] = shuffleArray([...news, ...productivities]);
-
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo, useEffect } from "react";
 import {
   View,
   Text,
@@ -917,21 +904,25 @@ const ScreenshotBookmarks = () => {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedBookmark, setSelectedBookmark] = useState(null);
+  const [goodNews, setGoodNews] = useState<News[]>([]);
 
-  const allTags = useMemo(
-    () => [
-      ...new Set(
-        ((data as any) ?? []).flatMap((bookmark: any) => bookmark?.tags ?? [])
-      ),
-    ],
-    [data]
-  );
+  const allTags: any[] = [];
+  const data: any[] = shuffleArray([...goodNews, ...productivities]);
 
   const handleTagToggle = useCallback((tag: any) => {
     setSelectedTags((prev: any) =>
       prev.includes(tag) ? prev.filter((t: any) => t !== tag) : [...prev, tag]
     );
   }, []);
+
+  useEffect(() => {
+    getRecommendations(userPreference, news.map(({ title }) => title)).then((res) => {
+      console.log("res", res);
+      const goodTitles = res.slice(0, 10).map(({ article }: any) => article);
+      setGoodNews(news.filter(({ title }) => goodTitles.includes(title)));
+    });
+  }, []);
+
 
   return (
     <View
@@ -978,3 +969,30 @@ const ScreenshotBookmarks = () => {
 };
 
 export default ScreenshotBookmarks;
+
+
+
+async function getRecommendations(userPreference: string, articles: string[]) {
+  try {
+    const response = await fetch(`${BASE_URL}/recommend`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_preference: userPreference,
+        articles: articles
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.recommendations;
+  } catch (error) {
+    console.error('Error fetching recommendations:', error);
+    throw error;
+  }
+}
