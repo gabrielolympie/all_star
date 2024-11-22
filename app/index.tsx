@@ -12,12 +12,12 @@ const tags = [
 
 interface News {
   id?: number;
-  type: "news",
+  type: "news";
   title: string;
   text: string;
   content: string;
-  tags: string[],
-  date: string
+  tags: string[];
+  date: string;
 }
 
 const news: News[] = [
@@ -143,7 +143,7 @@ const productivities = [
     status: "in_progress",
     assignee: "Sarah K.",
     tags: ["marketing", "quarterly-review", "presentation"],
-    date: "2024-12-15T16:00:00Z"
+    date: "2024-12-15T16:00:00Z",
   },
   {
     id: 12,
@@ -154,7 +154,7 @@ const productivities = [
     status: "todo",
     assignee: "Mike R.",
     tags: ["documentation", "support", "maintenance"],
-    date: "2024-12-10T14:00:00Z"
+    date: "2024-12-10T14:00:00Z",
   },
   {
     id: 13,
@@ -165,7 +165,7 @@ const productivities = [
     status: "todo",
     assignee: "Alex M.",
     tags: ["HR", "automation", "process"],
-    date: "2024-12-20T09:00:00Z"
+    date: "2024-12-20T09:00:00Z",
   },
   {
     id: 14,
@@ -176,7 +176,7 @@ const productivities = [
     status: "in_progress",
     assignee: "David L.",
     tags: ["security", "mobile", "audit"],
-    date: "2024-12-08T11:00:00Z"
+    date: "2024-12-08T11:00:00Z",
   },
   {
     id: 15,
@@ -187,19 +187,37 @@ const productivities = [
     status: "completed",
     assignee: "Emma S.",
     tags: ["analysis", "client-feedback", "improvement"],
-    date: "2024-12-05T15:30:00Z"
-  }
+    date: "2024-12-05T15:30:00Z",
+  },
+];
+
+const memories = [
+  {
+    name: "news",
+    preference:
+      "Technology News. The user prefers news related to advancements in artificial intelligence, blockchain technology, and consumer electronics. They are interested in industry analysis, expert opinions, and case studies showcasing real-world applications. Reliable sources include Wired, TechCrunch, and MIT Technology Review, with an emphasis on emerging trends and ethical implications.",
+  },
+  {
+    name: "news",
+    preference:
+      "Sports. The user is a fan of soccer and basketball, following both international tournaments and local leagues. They appreciate in-depth match analysis, player profiles, and tactical breakdowns. Preferred sources are ESPN, The Athletic, and social media commentary from analysts. The tone should be dynamic and engaging.",
+  },
+  {
+    name: "news",
+    preference:
+      "Entertainment. The user prefers news about the latest movies, TV shows, and celebrity interviews, particularly focusing on drama and sci-fi genres. They follow streaming platforms like Netflix and Disney+ and enjoy behind-the-scenes stories, director interviews, and critical reviews. They appreciate sources like Variety and Rotten Tomatoes.",
+  },
 ];
 
 function shuffleArray(array: any[]) {
   for (let i = array.length - 1; i >= 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
 }
 
-const data: any[] = shuffleArray([...news, ...productivities])
+const data: any[] = shuffleArray([...news, ...productivities]);
 
 import React, { useState, useCallback, useMemo } from "react";
 import {
@@ -490,33 +508,48 @@ interface TaskCardProps {
   onPress?: () => void;
 }
 
-const TaskCard = ({ title, text, tags, date, priority, status, assignee, onPress }: TaskCardProps) => {
+const TaskCard = ({
+  title,
+  text,
+  tags,
+  date,
+  priority,
+  status,
+  assignee,
+  onPress,
+}: TaskCardProps) => {
   const getPriorityColor = () => {
-    switch(priority) {
-      case 'high': return '#ef4444';
-      case 'medium': return '#f59e0b';
-      case 'low': return '#10b981';
+    switch (priority) {
+      case "high":
+        return "#ef4444";
+      case "medium":
+        return "#f59e0b";
+      case "low":
+        return "#10b981";
     }
   };
 
   const getStatusIcon = () => {
-    switch(status) {
-      case 'todo': return <ClipboardList size={16} color="#fff" />;
-      case 'in_progress': return <Clock size={16} color="#fff" />;
-      case 'completed': return <CheckCircle size={16} color="#fff" />;
+    switch (status) {
+      case "todo":
+        return <ClipboardList size={16} color="#fff" />;
+      case "in_progress":
+        return <Clock size={16} color="#fff" />;
+      case "completed":
+        return <CheckCircle size={16} color="#fff" />;
     }
   };
 
   return (
-    <TouchableOpacity 
+    <TouchableOpacity
       style={{
-        backgroundColor: '#fff',
+        backgroundColor: "#fff",
         borderRadius: 12,
         marginBottom: 16,
-        overflow: 'hidden',
+        overflow: "hidden",
         ...Platform.select({
           ios: {
-            shadowColor: '#000',
+            shadowColor: "#000",
             shadowOffset: { width: 0, height: 2 },
             shadowOpacity: 0.1,
             shadowRadius: 4,
@@ -524,45 +557,57 @@ const TaskCard = ({ title, text, tags, date, priority, status, assignee, onPress
           android: {
             elevation: 3,
           },
-        })
+        }),
       }}
       onPress={onPress}
       activeOpacity={0.7}
     >
       {/* Status bar */}
-      <View style={{
-        backgroundColor: getPriorityColor(),
-        paddingHorizontal: 16,
-        paddingVertical: 8,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between'
-      }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <View
+        style={{
+          backgroundColor: getPriorityColor(),
+          paddingHorizontal: 16,
+          paddingVertical: 8,
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
           {getStatusIcon()}
-          <Text style={{
-            color: '#fff',
-            fontSize: 12,
-            fontWeight: '500',
-            marginLeft: 8,
-            textTransform: 'uppercase'
-          }}>{status.replace('_', ' ')}</Text>
+          <Text
+            style={{
+              color: "#fff",
+              fontSize: 12,
+              fontWeight: "500",
+              marginLeft: 8,
+              textTransform: "uppercase",
+            }}
+          >
+            {status.replace("_", " ")}
+          </Text>
         </View>
 
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
           {assignee && (
-            <View style={{ 
-              backgroundColor: 'rgba(255, 255, 255, 0.9)',
-              paddingHorizontal: 8,
-              paddingVertical: 2,
-              borderRadius: 12,
-              marginLeft: 8
-            }}>
-              <Text style={{
-                color: getPriorityColor(),
-                fontSize: 12,
-                fontWeight: '500'
-              }}>{assignee}</Text>
+            <View
+              style={{
+                backgroundColor: "rgba(255, 255, 255, 0.9)",
+                paddingHorizontal: 8,
+                paddingVertical: 2,
+                borderRadius: 12,
+                marginLeft: 8,
+              }}
+            >
+              <Text
+                style={{
+                  color: getPriorityColor(),
+                  fontSize: 12,
+                  fontWeight: "500",
+                }}
+              >
+                {assignee}
+              </Text>
             </View>
           )}
         </View>
@@ -570,47 +615,58 @@ const TaskCard = ({ title, text, tags, date, priority, status, assignee, onPress
 
       {/* Content container */}
       <View style={{ padding: 16 }}>
-        <View style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'flex-start',
-          marginBottom: 8
-        }}>
-          <Text style={{
-            flex: 1,
-            fontSize: 18,
-            fontWeight: '600',
-            color: '#000',
-            marginRight: 8
-          }}>{title}</Text>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            marginBottom: 8,
+          }}
+        >
+          <Text
+            style={{
+              flex: 1,
+              fontSize: 18,
+              fontWeight: "600",
+              color: "#000",
+              marginRight: 8,
+            }}
+          >
+            {title}
+          </Text>
         </View>
 
-        <Text 
+        <Text
           style={{
             fontSize: 14,
-            color: '#666',
+            color: "#666",
             marginBottom: 12,
-            lineHeight: 20
-          }} 
+            lineHeight: 20,
+          }}
           numberOfLines={2}
         >
           {text}
         </Text>
 
-        <View style={{
-          flexDirection: 'row',
-          alignItems: 'center'
-        }}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
           <CalendarDays size={14} color="#666" />
-          <Text style={{
-            fontSize: 12,
-            color: '#666',
-            marginLeft: 4
-          }}>
-            Due {new Date(date).toLocaleDateString(undefined, { 
-              year: 'numeric', 
-              month: 'short', 
-              day: 'numeric'
+          <Text
+            style={{
+              fontSize: 12,
+              color: "#666",
+              marginLeft: 4,
+            }}
+          >
+            Due{" "}
+            {new Date(date).toLocaleDateString(undefined, {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
             })}
           </Text>
         </View>
@@ -863,7 +919,11 @@ const ScreenshotBookmarks = () => {
   const [selectedBookmark, setSelectedBookmark] = useState(null);
 
   const allTags = useMemo(
-    () => [...new Set((data as any ?? []).flatMap((bookmark : any) => bookmark?.tags ?? []))],
+    () => [
+      ...new Set(
+        ((data as any) ?? []).flatMap((bookmark: any) => bookmark?.tags ?? [])
+      ),
+    ],
     [data]
   );
 
