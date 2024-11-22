@@ -1,89 +1,88 @@
 const tags = ['technology', 'politics', 'health', 'environment', 'education', 'entertainment', 'travel', 'food', 'sports'];
 
 
-const bookmarks = [
+const news = [
   {
     id: 1,
-    title: "L’informatique quantique : le prochain grand saut",
-    text: "Plongez dans le monde de l’informatique quantique et explorez son potentiel révolutionnaire pour de nombreux secteurs.",
-    content: "L’informatique quantique utilise les principes de la mécanique quantique pour effectuer des calculs complexes à des vitesses inégalées. Contrairement aux ordinateurs classiques qui s’appuient sur des bits (0 ou 1), les ordinateurs quantiques utilisent des qubits, qui peuvent exister dans un état de superposition, leur permettant de traiter d’énormes quantités d’informations simultanément. Cette technologie révolutionnaire offre d’immenses possibilités pour des domaines comme la médecine, la science des matériaux et l’intelligence artificielle.\n\nImaginez concevoir des médicaments révolutionnaires avec une précision inégalée, développer de nouveaux matériaux aux propriétés révolutionnaires ou créer une intelligence artificielle capable de résoudre des problèmes actuellement hors de notre portée. Ce ne sont là que quelques-unes des transformations possibles offertes par l’informatique quantique.\n\nCependant, le développement d’ordinateurs quantiques est encore en phase initiale. Surmonter les défis techniques et construire des systèmes quantiques à grande échelle nécessite des recherches et des investissements considérables. Néanmoins, les avantages potentiels sont si importants que les gouvernements, les institutions de recherche et les entreprises privées du monde entier investissent massivement dans ce domaine passionnant. \n\nSuivez-nous dans notre exploration approfondie du fascinant monde de l’informatique quantique, en examinant ses applications, ses défis et les implications futures de cette technologie transformative.",
-    tags: ["technologie", "avenir", "quantique"],
+    title: "IBM Achieves 1000-Qubit Breakthrough in Quantum Computing",
+    text: "A significant milestone in quantum computing as IBM's latest quantum processor demonstrates unprecedented coherence times and error correction capabilities.",
+    content: "In a groundbreaking development at IBM's Thomas J. Watson Research Center, scientists have successfully demonstrated a 1000-qubit quantum processor with remarkable stability and error correction capabilities. This achievement marks a significant step toward practical quantum computing applications.\n\nDr. Sarah Chen, IBM's Head of Quantum Architecture, explains: 'What makes this breakthrough particularly significant is not just the number of qubits, but the dramatic improvement in coherence times and error rates. We're seeing coherence times of up to 300 microseconds, which is revolutionary for a processor of this scale.'\n\nThe implications of this advancement extend far beyond the laboratory. Goldman Sachs and Moderna have already announced partnerships to leverage this technology for financial modeling and drug discovery, respectively. The new processor demonstrates particular promise in molecular simulation, potentially accelerating drug development processes by orders of magnitude.\n\nHowever, challenges remain. Dr. James Martinez from MIT's Quantum Engineering Group notes, 'While this is undoubtedly a significant achievement, we're still years away from widespread practical applications. The next hurdle is scaling up while maintaining these impressive coherence times.'\n\nThe development has already attracted significant attention from both private and public sectors, with the U.S. Department of Energy announcing a $500 million investment in quantum computing research and development programs.",
+    tags: ["technology", "quantum-computing", "research", "innovation"],
     date: "2023-10-01T10:00:00Z",
   },
   {
     id: 2,
-    title: "La lutte mondiale pour la justice climatique",
-    text: "Examinez le mouvement croissant qui exige des mesures concrètes contre le changement climatique et explorez les défis et les solutions pour un avenir durable.",
-    content: "Du militantisme local aux accords internationaux, la lutte pour la justice climatique s’intensifie à travers le monde. L’urgence de la crise climatique est indéniable, avec la montée du niveau de la mer, les événements météorologiques extrêmes et les menaces pour la biodiversité devenant de plus en plus prévalentes.\n\nCette lutte ne s’agit pas seulement de protection de l’environnement ; c’est une question de justice sociale. Le changement climatique affecte disproportionnellement les communautés marginalisées, aggravant les inégalités existantes.\n\nLe mouvement mondial pour la justice climatique exige que ceux qui ont le plus contribué au problème assument la responsabilité de le résoudre. Il appelle à une transition juste vers un avenir durable, garantissant à tous l’accès à une énergie propre, à des environnements sains et sûrs et à une planète habitable.",
-    tags: ["environnement", "changementclimatique", "activisme"],
+    title: "UN Climate Report Reveals Critical Tipping Points Approaching Faster Than Predicted",
+    text: "Latest IPCC report indicates several climate tipping points could be reached within the next decade, prompting urgent calls for accelerated action.",
+    content: "The latest Intergovernmental Panel on Climate Change (IPCC) special report has revealed that critical climate tipping points are approaching more rapidly than previously estimated. The comprehensive study, involving over 200 scientists from 65 countries, highlights several immediate risks that could trigger cascading environmental effects.\n\nAccording to Dr. Elena Rodriguez, lead author of the report, 'We're observing unprecedented rates of change in several key systems. The Thwaites Glacier in Antarctica, often called the 'doomsday glacier,' is showing alarming signs of accelerated melting. If current trends continue, we could see significant sea level rise within our lifetimes.'\n\nThe report identifies three critical tipping points approaching faster than previously projected:\n- Arctic sea ice collapse could occur by 2035\n- Widespread permafrost thaw releasing massive amounts of methane\n- Accelerated deterioration of the Amazon rainforest's ability to act as a carbon sink\n\nIn response, the European Union has announced plans to accelerate its emissions reduction targets, aiming for a 65% reduction by 2030 compared to 1990 levels. China has also pledged to advance its peak emissions timeline to 2025.\n\nThe World Bank estimates that climate adaptation costs could reach $300 billion annually by 2030, particularly affecting vulnerable coastal regions and developing nations.",
+    tags: ["climate-change", "environment", "global-policy", "research"],
     date: "2023-10-02T12:30:00Z",
   },
   {
     id: 3,
-    title: "Bien-être mental : Privilégier son bien-être",
-    text: "Découvrez des stratégies pratiques et des ressources pour améliorer votre santé mentale et cultiver un sentiment de bien-être.",
-    content: "La santé mentale fait partie intégrante du bien-être général. Elle englobe notre bien-être émotionnel, psychologique et social, influençant la façon dont nous pensons, ressentons et agissons.\n\nDans notre monde effréné, il est plus important que jamais de donner la priorité à notre santé mentale. Le stress, l’anxiété et la dépression sont de plus en plus courants, impactant les individus, les familles et les communautés.\n\nCet article explore l’importance de donner la priorité à la santé mentale, en fournissant des stratégies fondées sur des preuves pour gérer le stress, l’anxiété et la dépression, et en mettant en évidence les ressources disponibles pour le soutien et l’orientation.",
-    tags: ["santé", "bienêtremental", "bien-être"],
+    title: "Stanford Study Reveals Novel Links Between Gut Microbiome and Mental Health",
+    text: "Groundbreaking research establishes direct pathways between specific gut bacteria and mood regulation, opening new avenues for mental health treatment.",
+    content: "A landmark study from Stanford University's Department of Neurobiology has uncovered compelling evidence of direct communication pathways between gut bacteria and brain function, potentially revolutionizing our approach to mental health treatment.\n\nThe research, published in Nature Neuroscience, identified specific bacterial strains that produce compounds directly influencing serotonin and dopamine production. Lead researcher Dr. Michael Chang explains, 'We've not only identified these bacterial species but also mapped out the exact metabolic pathways through which they influence neurotransmitter production.'\n\nThe study tracked 1,200 participants over three years, combining microbiome analysis with advanced neuroimaging and psychological assessments. Results showed that certain bacterial compositions were associated with a 40% reduction in depression symptoms and a 60% improvement in anxiety markers.\n\nPharmaceutical companies are already taking notice. Pfizer has announced a new research division dedicated to developing microbiome-based mental health treatments, with clinical trials expected to begin in early 2024.\n\nDr. Rachel Foster from Harvard Medical School notes, 'This research could fundamentally change how we treat mental health conditions. We're looking at the potential for highly personalized treatments based on individual microbiome profiles.'",
+    tags: ["health", "mental-health", "research", "medicine"],
     date: "2023-10-03T14:45:00Z",
   },
   {
     id: 4,
-    title: "Aventures du week-end : Explorer les joyaux locaux",
-    text: "Dévoilez les trésors cachés et les expériences passionnantes de votre propre ville ou village.",
-    content: "Échappez à l’ordinaire et explorez les offres uniques de votre région. Vous n’avez pas besoin de voyager loin pour vivre une expérience inoubliable. Votre ville ou village cache probablement des joyaux cachés qui attendent d’être découverts.\n\nCet article vous propose des idées d’aventures pour le week-end, des cafés cachés et des galeries d’art aux randonnées pittoresques et aux sites historiques fascinants.\n\nSoutenez les entreprises locales, immergez-vous dans la culture de votre communauté et créez des souvenirs durables. Vous pourriez être surpris de ce que vous trouverez à votre porte.",
-    tags: ["divertissement", "week-end", "voyage"],
+    title: "The Rise of Dark Tourism: Historical Sites See Record Visitor Numbers",
+    text: "A growing trend in tourism sees historically significant but somber sites experiencing unprecedented visitor numbers, raising questions about preservation and respect.",
+    content: "Dark tourism – the phenomenon of visiting sites associated with death, tragedy, or the macabre – has seen a dramatic surge in popularity, with major sites reporting record visitor numbers in 2023. This trend raises important questions about balancing historical preservation with tourism demands.\n\nThe Auschwitz-Birkenau Memorial reported a 300% increase in visitors compared to previous years, while Chernobyl's Exclusion Zone has implemented a new booking system to manage overwhelming demand. Dr. Jessica Thompson, Professor of Tourism Studies at UCL, attributes this surge to several factors: 'We're seeing a convergence of increased historical awareness, social media influence, and a desire for more meaningful travel experiences.'\n\nSite managers are implementing innovative solutions to manage the influx while maintaining the dignity of these locations. The Hiroshima Peace Memorial has introduced advanced virtual reality experiences to reduce physical impact on the site while enhancing educational value.\n\nHowever, concerns about 'disaster tourism' persist. UNESCO has announced new guidelines for managing sensitive historical sites, emphasizing the balance between accessibility and preservation. The guidelines include recommendations for visitor capacity limits and mandatory educational components.",
+    tags: ["travel", "history", "tourism", "culture"],
     date: "2023-10-04T16:00:00Z",
   },
   {
     id: 5,
-    title: "Le pouvoir de l’éducation : façonner les futures générations",
-    text: "Explorez l’impact transformateur de l’éducation sur les individus, les communautés et la société dans son ensemble.",
-    content: "L’éducation est un droit fondamental et un moteur puissant de progrès social. Elle permet d’empower les individus, de favoriser l’innovation et de promouvoir le développement durable.\n\nDe l’éducation de la petite enfance à l’enseignement supérieur, l’éducation joue un rôle crucial dans la formation des individus et la construction de l’avenir de la société.\n\nCet article examine les multiples avantages de l’éducation, mettant en évidence son impact sur la croissance économique, la mobilité sociale, les résultats en matière de santé et l’engagement civique. Il explore également les défis liés à garantir un accès équitable à une éducation de qualité pour tous, plaidant pour des politiques et des pratiques qui promeuvent l’équité et l’excellence éducative.",
-    tags: ["éducation", "impact", "société"],
+    title: "AI-Powered Personalized Learning Shows Dramatic Results in Global Study",
+    text: "The largest study of AI in education reveals significant improvements in student performance across diverse learning environments and socioeconomic backgrounds.",
+    content: "A comprehensive global study involving 50,000 students across 27 countries has demonstrated unprecedented success in personalized learning through AI-powered educational platforms. The research, conducted by the Global Education Consortium, shows average improvement in learning outcomes of 40% compared to traditional methods.\n\nThe study implemented adaptive learning algorithms that continuously adjusted to individual student progress, creating truly personalized learning pathways. 'What's particularly exciting is that we saw the most dramatic improvements among traditionally underperforming students,' notes Dr. Robert Chen, the study's principal investigator at Oxford University.\n\nKey findings include:\n- 47% improvement in mathematics performance\n- 38% increase in reading comprehension\n- 65% reduction in achievement gaps between different socioeconomic groups\n\nThe Bill & Melinda Gates Foundation has announced a $2 billion initiative to implement these systems in underserved communities worldwide. However, challenges remain regarding digital infrastructure and teacher training.\n\nEducation ministers from 15 countries have already committed to integrating AI-powered learning tools into their national curricula by 2025.",
+    tags: ["education", "artificial-intelligence", "technology", "research"],
     date: "2023-10-05T18:15:00Z",
   },
   {
     id: 6,
-    title: "Briser les barrières : les femmes en STEM",
-    text: "Célébrez les réalisations des femmes en science, technologie, ingénierie et mathématiques (STEM) et explorez les défis auxquels elles sont confrontées.",
-    content: "Les femmes ont fait des contributions significatives aux domaines STEM, repoussant les frontières de la connaissance et de l’innovation.\n\nMalgré ces réalisations, les femmes continuent de faire face à des obstacles pour une pleine participation dans les domaines STEM. Les stéréotypes, les biais et le manque de représentation peuvent décourager les filles de poursuivre des carrières en STEM et créer des environnements de travail hostiles pour les femmes dans ces secteurs.\n\nCet article met en lumière les réalisations inspirantes des femmes en STEM, examine les défis auxquels elles sont confrontées et plaide pour une plus grande équité et une inclusion accrue dans ces domaines essentiels.",
-    tags: ["technologie", "femmes", "STEM"],
+    title: "SpaceX Announces First All-Female Mars Mission Crew",
+    text: "Historic announcement reveals the selection of an all-female crew for the first crewed Mars landing mission, scheduled for 2029.",
+    content: "SpaceX, in collaboration with NASA, has announced the selection of the first crew for their planned Mars landing mission, making history with an all-female team of astronauts and scientists. The crew selection emphasizes both technical expertise and psychological compatibility for the three-year mission.\n\nThe four-person crew includes:\n- Mission Commander Dr. Sarah Martinez, veteran of three ISS missions\n- Flight Engineer Dr. Yuki Tanaka, spacecraft systems specialist\n- Dr. Aisha Patel, astrobiologist and geological expert\n- Dr. Elena Popov, medical officer and radiation specialist\n\nThe selection process involved over 2,000 candidates and two years of intensive testing. 'This team represents the absolute peak of human capability and cooperation,' stated NASA Administrator Bill Nelson. 'Their selection was based purely on merit, and they happened to be the most qualified candidates.'\n\nThe crew will undergo three years of specialized training, including extended isolation periods in Mars-analog environments. The mission aims to establish the first permanent human presence on Mars, with a planned landing in Jezero Crater.",
+    tags: ["space", "women-in-stem", "science", "technology"],
     date: "2023-10-06T20:30:00Z",
   },
   {
     id: 7,
-    title: "L’essor du streaming : révolutionner le paysage du divertissement",
-    text: "Analysez l’impact des services de streaming sur l’industrie du divertissement et explorez les tendances émergentes dans la consommation de contenu.",
-    content: "Les plateformes de streaming ont révolutionné la façon dont nous consommons du divertissement, offrant une vaste bibliothèque de contenu à portée de main.\n\nDes films et des émissions de télévision aux musiques et aux podcasts, les services de streaming ont bouleversé les modèles médiatiques traditionnels, donnant aux téléspectateurs un choix et un contrôle inédits sur leur expérience de divertissement.\n\nCet article explore l’essor du streaming, son impact sur les médias traditionnels et l’avenir du divertissement dans un monde numérique. Il examine les modèles économiques des géants du streaming, l’impact sur la création de contenu et les tendances évolutives du comportement des consommateurs.",
-    tags: ["divertissement", "streaming", "technologie"],
+    title: "Netflix's AI-Generated Content Sparks Industry Debate",
+    text: "The streaming giant's experimental AI-assisted series raises questions about creativity, authorship, and the future of entertainment.",
+    content: "Netflix has unveiled its first AI-collaborative series, where artificial intelligence played a significant role in script development, visual design, and music composition. The series, 'Quantum Dreams,' has received critical acclaim while igniting fierce debate about AI's role in creative industries.\n\nThe show utilized advanced language models for initial script generation, with human writers refining and developing the AI's suggestions. Visual effects and music were similarly created through a hybrid AI-human collaboration process.\n\nIndustry response has been divided. The Writers Guild of America has expressed concerns about potential job displacement, while others see opportunity. 'This isn't about replacing human creativity,' explains Netflix's Chief Innovation Officer Dr. Lisa Park. 'It's about augmenting it. The AI provides novel connections and ideas that our creative teams then develop.'\n\nThe series has achieved record viewing figures and unprecedented engagement metrics. However, questions about creative rights and compensation in AI-assisted content remain unresolved. The Screen Actors Guild has called for new framework agreements addressing AI collaboration in entertainment production.",
+    tags: ["entertainment", "artificial-intelligence", "streaming", "technology"],
     date: "2023-10-07T11:00:00Z",
   },
   {
     id: 8,
-    title: "Voyager de manière durable : explorer de manière responsable",
-    text: "Découvrez des conseils et des pratiques pour minimiser votre impact environnemental tout en explorant le monde.",
-    content: "Le tourisme durable consiste à minimiser notre empreinte écologique tout en maximisant nos expériences.\n\nIl s’agit de voyager de manière à respecter l’environnement, les cultures locales et les communautés.\n\nCet article fournit des conseils pratiques pour voyager de manière responsable, des choix d’hébergements écologiques et de transports durables au soutien des entreprises locales et à la réduction des déchets. Il explore également le concept de tourisme responsable, encourageant les voyageurs à interagir avec les communautés locales de manière significative et à contribuer au bien-être des lieux qu’ils visitent.",
-    tags: ["voyage", "durabilité", "environnement"],
+    title: "Revolutionary Carbon Capture Technology Achieves 90% Efficiency",
+    text: "Breakthrough in direct air capture technology promises cost-effective climate change mitigation, attracting major investment from tech giants.",
+    content: "A startup backed by MIT's Climate Initiative has demonstrated a revolutionary carbon capture system achieving 90% efficiency at one-third the cost of existing technologies. The system, developed by Carbon Revolution Inc., uses novel metal-organic frameworks (MOFs) to capture CO2 directly from the atmosphere.\n\nThe technology has attracted $2 billion in investment from a consortium including Microsoft, Google, and Shell. 'This isn't just incrementally better – it's a game-changer,' states Dr. James Chen, lead developer. 'We're looking at carbon capture costs below $50 per ton, making large-scale deployment economically viable for the first time.'\n\nThe system has been successfully tested at pilot facilities in Texas and Norway, with plans for commercial-scale deployment in 2024. The technology can be retrofitted to existing industrial facilities or deployed as standalone carbon capture plants.\n\nThe International Energy Agency has revised its climate mitigation projections based on this development, suggesting that widespread adoption could reduce atmospheric CO2 by up to 2 gigatons annually by 2030.",
+    tags: ["environment", "technology", "climate-action", "innovation"],
     date: "2023-10-08T13:30:00Z",
   },
   {
     id: 9,
-    title: "Fusion culinaire : explorer les saveurs mondiales",
-    text: "Embarquez dans un voyage culinaire et découvrez le monde fascinant de la cuisine fusion.",
-    content: "La cuisine fusion combine les traditions culinaires de différentes cultures, créant des plats innovants et savoureux.\n\nC’est une célébration de la diversité, de la créativité et du plaisir de découvrir de nouvelles saveurs.\n\nCet article explore l’histoire et l’évolution de la cuisine fusion, mettant en lumière les chefs et les restaurants renommés qui ont repoussé les limites de l’innovation culinaire. Il vous inspirera également à explorer vos propres aventures culinaires, à expérimenter avec différentes combinaisons de saveurs et à créer vos propres plats uniques.",
-    tags: ["nourriture", "fusion", "culture"],
+    title: "Lab-Grown Meat Receives FDA Approval for Wide-Scale Distribution",
+    text: "Landmark decision allows cellular agriculture products to enter mainstream market, potentially revolutionizing food industry.",
+    content: "The FDA has granted approval for wide-scale distribution of lab-grown meat products from three leading companies, marking a historic shift in food production and regulation. This decision follows extensive safety testing and nutritional analysis of cellular agriculture products.\n\nThe approved products, which include chicken, beef, and fish alternatives, have demonstrated nutritional profiles identical or superior to traditional meat. 'This isn't an alternative to meat – it is meat, just produced more efficiently,' explains Dr. Sarah Anderson, CEO of CellAg Technologies.\n\nEnvironmental impact assessments indicate that lab-grown meat production reduces water usage by 96% and land use by 99% compared to traditional livestock farming. Energy requirements remain a concern, though technological improvements have reduced costs by 70% since 2020.\n\nMajor retailers including Whole Foods and Kroger have announced plans to stock these products by early 2024. The USDA projects that cellular agriculture could represent 30% of meat consumption by 2030.",
+    tags: ["food-technology", "sustainability", "innovation", "science"],
     date: "2023-10-09T15:45:00Z",
   },
   {
     id: 10,
-    title: "La Coupe du monde : une célébration du fair-play",
-    text: "Revivez l’excitation de la Coupe du monde et explorez le pouvoir fédérateur du sport.",
-    content: "La Coupe du Monde de la FIFA est un événement mondial qui unit les gens à travers leur passion commune pour le football.\n\nC’est un tournoi qui transcende les frontières, les langues et les cultures, rassemblant les fans dans une célébration de l’athlétisme, de la passion et du fair-play.\n\nCet article célèbre l’histoire, les traditions et l’impact culturel de la Coupe du Monde, mettant en lumière l’esprit sportif et le pouvoir fédérateur du sport.",
-    tags: ["sports", "football", "coupe du monde"],
+    title: "Digital Athletes Compete Alongside Physical Players in 2024 Olympics",
+    text: "The International Olympic Committee introduces groundbreaking 'hybrid athletics' category, combining physical and digital sports performance.",
+    content: "The International Olympic Committee (IOC) has announced the inclusion of 'hybrid athletics' in the 2024 Paris Olympics, where digital athletes will compete alongside physical athletes in select events. This groundbreaking decision follows years of development in motion capture and virtual reality technologies.\n\nThe new category will feature events where physical performances are digitally captured and can be competed against in real-time or asynchronously. 'This isn't about replacing traditional athletics,' explains IOC President Thomas Bach. 'It's about expanding the definition of human athletic achievement.'\n\nQualification standards combine traditional metrics with digital performance parameters. Athletes can compete either physically or digitally, with sophisticated systems ensuring competitive fairness. The technology has been developed in partnership with leading sports technology firms and has undergone rigorous testing at international events.\n\nThe decision has received support from major sports federations, though some traditional athletes express concerns about maintaining the integrity of Olympic competition. The IOC has established a dedicated committee for hybrid athletics governance.",
+    tags: ["sports", "technology", "olympics", "innovation"],
     date: "2023-10-10T18:00:00Z",
   },
 ];
-
 
 
 import React, { useState, useCallback, useMemo } from 'react';
@@ -502,16 +501,16 @@ const ScreenshotBookmarks = () => {
   const [selectedBookmark, setSelectedBookmark] = useState(null);
   
   const allTags = useMemo(() => 
-    [...new Set(bookmarks.flatMap(bookmark => bookmark.tags))],
-    [bookmarks]
+    [...new Set(news.flatMap(bookmark => bookmark.tags))],
+    [news]
   );
 
   const filteredBookmarks = useMemo(() => 
-    bookmarks.filter(bookmark => 
+    news.filter(bookmark => 
       selectedTags.length === 0 || 
       selectedTags.some(tag => bookmark.tags.includes(tag))
     ),
-    [bookmarks, selectedTags]
+    [news, selectedTags]
   );
 
   const handleTagToggle = useCallback((tag: any) => {
