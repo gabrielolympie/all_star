@@ -1,0 +1,16 @@
+[project]
+name = "hackathon-meta"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "einops>=0.8.0",
+    "flask>=3.1.0",
+    "mirascope[groq]>=1.9.5",
+    "pandas>=2.2.3",
+    "python-dotenv>=1.0.1",
+    "sentence-transformers>=3.3.1",
+    "torch>=2.5.1",
+    "tqdm>=4.67.0",
+]

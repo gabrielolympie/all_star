@@ -1,0 +1,164 @@
+{
+  "ranked_notifications": [
+    {
+      "uid": "c8cde665-4928-453b-a0d4-b9d314e19d28",
+      "content": "Your package has been shipped and is on its way!",
+      "title": "Shipping Update",
+      "timestamp": "2023-10-15T14:30:00",
+      "source": "E-commerce App",
+      "metadata": {
+        "order_id": "12345",
+        "carrier": "UPS"
+      },
+      "scores": {
+        "digest": "Shipping Update",
+        "relevance_score": 90,
+        "urgency_score": 100
+      }
+    },
+    {
+      "uid": "c63fb7ab-2307-4244-a59e-1c7169eea0ba",
+      "content": "Heavy rain expected this evening in your area.",
+      "title": "Weather Alert",
+      "timestamp": "2023-10-15T07:45:00",
+      "source": "Weather App",
+      "metadata": {
+        "severity": "Low",
+        "region": "Downtown"
+      },
+      "scores": {
+        "digest": "Weather Alert",
+        "relevance_score": 80,
+        "urgency_score": 95
+      }
+    },
+    {
+      "uid": "8e311f1b-605f-4b09-b9bf-cec705bd8bcd",
+      "content": "Congratulations! You have won a prize in our sweepstakes.",
+      "title": "Prize Winner Announcement",
+      "timestamp": "2023-10-15T16:00:00",
+      "source": "Contest Organizer",
+      "metadata": {
+        "prize_id": "prize_001",
+        "claim_deadline": "2023-10-20"
+      },
+      "scores": {
+        "digest": "Prize Winner Announcement",
+        "relevance_score": 100,
+        "urgency_score": 80
+      }
+    },
+    {
+      "uid": "c281f297-79ee-4cbb-89b0-b84fdf4dc15b",
+      "content": "Your flight has been delayed by two hours.",
+      "title": "Travel Update",
+      "timestamp": "2023-10-15T13:30:00",
+      "source": "Airline App",
+      "metadata": {
+        "flight_number": "AB123",
+        "new_departure_time": "16:00"
+      },
+      "scores": {
+        "digest": "Flight Delayed",
+        "relevance_score": 80,
+        "urgency_score": 80
+      }
+    },
+    {
+      "uid": "bffef0f4-0db9-4ce7-94d7-b90609be439e",
+      "content": "Don't forget your meeting at 3 PM today.",
+      "title": "Meeting Reminder",
+      "timestamp": "2023-10-15T09:00:00",
+      "source": "Calendar App",
+      "metadata": {
+        "meeting_id": "67890",
+        "location": "Office Room 2"
+      },
+      "scores": {
+        "digest": "Reminder",
+        "relevance_score": 60,
+        "urgency_score": 80
+      }
+    },
+    {
+      "uid": "53d29976-3778-4816-b8f4-9f5ce767280c",
+      "content": "I need you right now, answer me!",
+      "title": "New Message",
+      "timestamp": "2023-10-15T12:15:00",
+      "source": "Messaging App",
+      "metadata": {
+        "sender_id": "friend_001",
+        "message_id": "msg_123"
+      },
+      "scores": {
+        "digest": "I need you right now, answer me!",
+        "relevance_score": 60,
+        "urgency_score": 80
+      }
+    },
+    {
+      "uid": "944933fb-e72c-4af8-8e06-533791eb3755",
+      "content": "System update available. Please restart your device.",
+      "title": "Update Notification",
+      "timestamp": "2023-10-15T08:00:00",
+      "source": "Device Manager",
+      "metadata": {
+        "update_version": "v1.2.3",
+        "required_space": "500MB"
+      },
+      "scores": {
+        "digest": "Device Restart Required",
+        "relevance_score": 85,
+        "urgency_score": 70
+      }
+    },
+    {
+      "uid": "c4a73cb6-5f36-493d-ba31-31376fdc71c1",
+      "content": "Flash sale starts now! Up to 50% off.",
+      "title": "Limited Time Offer",
+      "timestamp": "2023-10-15T11:00:00",
+      "source": "Shopping App",
+      "metadata": {
+        "sale_end_time": "18:00",
+        "discount_rate": "50%"
+      },
+      "scores": {
+        "digest": "Limited Time Sale",
+        "relevance_score": 60,
+        "urgency_score": 70
+      }
+    },
+    {
+      "uid": "37f441d9-5957-43bb-af71-90eb85cad853",
+      "content": "Your weekly activity report is ready.",
+      "title": "Weekly Report",
+      "timestamp": "2023-10-14T18:00:00",
+      "source": "Fitness Tracker",
+      "metadata": {
+        "report_period": "last_week",
+        "steps_count": 70000
+      },
+      "scores": {
+        "digest": "Weekly activity report",
+        "relevance_score": 90,
+        "urgency_score": 60
+      }
+    },
+    {
+      "uid": "c884e22a-9b3d-43f2-a179-c37476ae5661",
+      "content": "New comment on your photo.",
+      "title": "Social Media Update",
+      "timestamp": "2023-10-15T10:20:00",
+      "source": "Social Media App",
+      "metadata": {
+        "post_id": "photo_789",
+        "commenter_id": "user_456"
+      },
+      "scores": {
+        "digest": "New comment on facebook post",
+        "relevance_score": 25,
+        "urgency_score": 10
+      }
+    }
+  ]
+}
