@@ -159,7 +159,7 @@ const Badge = ({ children, variant = "default", onPress }:any) => {
 };
 
 // Molecule Components
-const Header = ({ onFilterPress }: any) => (
+const Header = () => (
   <View style={{
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -180,7 +180,6 @@ const Header = ({ onFilterPress }: any) => (
           color: '#666'
         }}>The app you always needed</Text>
       </View>
-    <IconButton icon={Filter} onPress={onFilterPress} />
   </View>
 );
 
@@ -464,7 +463,7 @@ const ScreenshotBookmarks = () => {
       backgroundColor: '#f5f5f5'
     }} >
       <StatusBar barStyle="dark-content" />
-      <Header onFilterPress={() => setIsFilterVisible(true)} />
+      <Header />
       
       <FlatList
         data={filteredBookmarks}
