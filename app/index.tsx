@@ -224,27 +224,9 @@ import {
   Keyboard,
   Dimensions,
 } from "react-native";
-import {
-  Camera,
-  X,
-  Filter,
-  Calendar,
-  ChevronDown,
-  Newspaper,
-  ChevronRight,
-  CalendarDays,
-  ClipboardList,
-  Clock,
-  CheckCircle,
-} from "lucide-react";
 
 // Atomic Components
-const IconButton = ({
-  icon: Icon,
-  onPress,
-  color = "#000",
-  size = 24,
-}: any) => (
+const IconButton = ({ emoji, onPress, size = 24 }: any) => (
   <TouchableOpacity
     style={{
       padding: 8,
@@ -253,7 +235,7 @@ const IconButton = ({
     onPress={onPress}
     activeOpacity={0.7}
   >
-    <Icon size={size} color={color} />
+    <Text style={{ fontSize: size }}>{emoji}</Text>
   </TouchableOpacity>
 );
 
@@ -378,7 +360,7 @@ const NewsCard = ({ title, text, tags, date, onPress }: NewsCardProps) => {
           alignItems: "center",
         }}
       >
-        <Newspaper size={16} color="#fff" />
+        <Text style={{ fontSize: 16 }}>📰</Text>
         <Text
           style={{
             color: "#fff",
@@ -413,7 +395,6 @@ const NewsCard = ({ title, text, tags, date, onPress }: NewsCardProps) => {
           >
             {title}
           </Text>
-          <ChevronRight size={20} color="#666" />
         </View>
 
         {/* Description */}
@@ -519,14 +500,14 @@ const TaskCard = ({
     }
   };
 
-  const getStatusIcon = () => {
+  const getStatusEmoji = () => {
     switch (status) {
       case "todo":
-        return <ClipboardList size={16} color="#fff" />;
+        return "📋";
       case "in_progress":
-        return <Clock size={16} color="#fff" />;
+        return "⏳";
       case "completed":
-        return <CheckCircle size={16} color="#fff" />;
+        return "✅";
     }
   };
 
@@ -564,7 +545,7 @@ const TaskCard = ({
         }}
       >
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          {getStatusIcon()}
+          <Text style={{ fontSize: 16 }}>{getStatusEmoji()}</Text>
           <Text
             style={{
               color: "#fff",
@@ -644,7 +625,7 @@ const TaskCard = ({
             alignItems: "center",
           }}
         >
-          <CalendarDays size={14} color="#666" />
+          <Text style={{ fontSize: 14 }}>📅</Text>
           <Text
             style={{
               fontSize: 12,
@@ -724,7 +705,7 @@ const FilterSheet = ({
             >
               Filters
             </Text>
-            <IconButton icon={X} onPress={onClose} />
+            <IconButton emoji="❌" onPress={onClose} />
           </View>
 
           <View
@@ -863,7 +844,7 @@ const DetailModal = ({ bookmark, visible, onClose }: any) => {
             >
               {bookmark.title}
             </Text>
-            <IconButton icon={X} onPress={onClose} />
+            <IconButton emoji="❌" onPress={onClose} />
           </View>
 
           <ScrollView style={{ maxHeight: "60vh" } as any}>
