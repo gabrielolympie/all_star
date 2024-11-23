@@ -10,8 +10,7 @@ const tags = [
   "sports",
 ];
 
-const BASE_URL = 'http://localhost:5000';
-
+const BASE_URL = "http://localhost:5000";
 
 interface News {
   id?: number;
@@ -194,9 +193,13 @@ const productivities = [
   },
 ];
 
-const userPreference =  "Technology News. The user prefers news related to advancements in artificial intelligence, blockchain technology, and consumer electronics. They are interested in industry analysis, expert opinions, and case studies showcasing real-world applications. Reliable sources include Wired, TechCrunch, and MIT Technology Review, with an emphasis on emerging trends and ethical implications.";
+const userPreference =
+  "Technology News. The user prefers news related to advancements in artificial intelligence, blockchain technology, and consumer electronics. They are interested in industry analysis, expert opinions, and case studies showcasing real-world applications. Reliable sources include Wired, TechCrunch, and MIT Technology Review, with an emphasis on emerging trends and ethical implications.";
 
-getRecommendations(userPreference, news.map(({ title }) => title));
+getRecommendations(
+  userPreference,
+  news.map(({ title }) => title)
+);
 
 function shuffleArray(array: any[]) {
   for (let i = array.length - 1; i >= 0; i--) {
@@ -916,13 +919,15 @@ const ScreenshotBookmarks = () => {
   }, []);
 
   useEffect(() => {
-    getRecommendations(userPreference, news.map(({ title }) => title)).then((res) => {
+    getRecommendations(
+      userPreference,
+      news.map(({ title }) => title)
+    ).then((res) => {
       console.log("res", res);
       const goodTitles = res.slice(0, 5).map(({ article }: any) => article);
       setGoodNews(news.filter(({ title }) => goodTitles.includes(title)));
     });
   }, []);
-
 
   return (
     <View
@@ -970,29 +975,76 @@ const ScreenshotBookmarks = () => {
 
 export default ScreenshotBookmarks;
 
-
-
 async function getRecommendations(userPreference: string, articles: string[]) {
-  try {
-    const response = await fetch(`${BASE_URL}/recommend`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        user_preference: userPreference,
-        articles: articles
-      })
-    });
+  return [
+    {
+      article: "Netflix's AI-Generated Content Sparks Industry Debate",
+      score: 0.6734210252761841,
+    },
+    {
+      article:
+        "AI-Powered Personalized Learning Shows Dramatic Results in Global Study",
+      score: 0.6619539260864258,
+    },
+    {
+      article:
+        "Lab-Grown Meat Receives FDA Approval for Wide-Scale Distribution",
+      score: 0.5815669298171997,
+    },
+    {
+      article: "IBM Achieves 1000-Qubit Breakthrough in Quantum Computing",
+      score: 0.577540934085846,
+    },
+    {
+      article:
+        "Digital Athletes Compete Alongside Physical Players in 2024 Olympics",
+      score: 0.5638554096221924,
+    },
+    {
+      article:
+        "Revolutionary Carbon Capture Technology Achieves 90% Efficiency",
+      score: 0.5593730807304382,
+    },
+    {
+      article:
+        "UN Climate Report Reveals Critical Tipping Points Approaching Faster Than Predicted",
+      score: 0.5560550093650818,
+    },
+    {
+      article:
+        "The Rise of Dark Tourism: Historical Sites See Record Visitor Numbers",
+      score: 0.5514367818832397,
+    },
+    {
+      article:
+        "Stanford Study Reveals Novel Links Between Gut Microbiome and Mental Health",
+      score: 0.5087637901306152,
+    },
+    {
+      article: "SpaceX Announces First All-Female Mars Mission Crew",
+      score: 0.47758662700653076,
+    },
+  ];
+  // try {
+  //   const response = await fetch(`${BASE_URL}/recommend`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       user_preference: userPreference,
+  //       articles: articles
+  //     })
+  //   });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+  //   if (!response.ok) {
+  //     throw new Error(`HTTP error! status: ${response.status}`);
+  //   }
 
-    const data = await response.json();
-    return data.recommendations;
-  } catch (error) {
-    console.error('Error fetching recommendations:', error);
-    throw error;
-  }
+  //   const data = await response.json();
+  //   return data.recommendations;
+  // } catch (error) {
+  //   console.error('Error fetching recommendations:', error);
+  //   throw error;
+  // }
 }
